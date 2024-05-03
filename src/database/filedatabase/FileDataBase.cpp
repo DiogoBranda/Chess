@@ -21,6 +21,7 @@ namespace chess::database
     {
         m_pathDataBase = pathDataBase;
         m_initted = loadFromFile();
+        return m_initted;
     }
 
     bool FileDataBase::addUser(const User &newUser)
@@ -30,10 +31,8 @@ namespace chess::database
             return false;
         }
 
-        auto userItr = std::find_if(m_users.begin(), m_users.end(), [&newUser](const User &user)
-                                    { return newUser.userId == user.userId; });
-
-        if (userItr != m_users.end())
+        if (std::find_if(m_users.begin(), m_users.end(), [&newUser](const User &user)
+                         { return newUser.userId == user.userId; }) != m_users.end())
         {
             std::cout << "UserId already used" << std::endl;
             return false;

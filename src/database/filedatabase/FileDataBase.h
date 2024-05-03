@@ -19,7 +19,6 @@ namespace chess::database
     class FileDataBase : public IDataBase
     {
     public:
-
         bool initDataBase(const std::string &pathDataBase) override;
 
         bool addUser(const User &user) override;

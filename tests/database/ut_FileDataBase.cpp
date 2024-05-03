@@ -49,6 +49,5 @@ namespace chess::database::ut
 
         // Not possible to remove a user when there is no database
         EXPECT_FALSE(m_db->removeUser({"User1"}));
-
     }
 }
